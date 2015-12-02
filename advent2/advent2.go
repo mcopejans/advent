@@ -3,10 +3,8 @@ package main
 import (
     "bufio"
     "fmt"
-	"math"
+    "math"
     "os"
-	"strings"
-	"strconv"
 )
 
 func main() {
@@ -14,10 +12,8 @@ func main() {
     var total_length = 0.
     scanner := bufio.NewScanner(os.Stdin)
     for scanner.Scan() {
-        var dimension_split = strings.Split(scanner.Text(),"x")
-        var l,_ = strconv.ParseFloat(dimension_split[0],64)
-        var w,_ = strconv.ParseFloat(dimension_split[1],64)
-        var h,_ = strconv.ParseFloat(dimension_split[2],64)
+        var l,w,h float64
+        fmt.Sscanf(scanner.Text(),"%fx%fx%f",&l,&w,&h)
         var surface_wrapping_paper = 2*l*w + 2*l*h + 2*w*h + math.Min(l*w, math.Min(l*h, w*h))
         total_surface += surface_wrapping_paper
 
